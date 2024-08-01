@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@1,700&display=swap');
+
+:root {
+    --color-pink: #F6D6D6;
+    --color-blue: #7BD3EA;
+    --fancy-font: 'Pacifico', sans-serif;
+    --text-font: 'Balsamiq Sans', cursive;
+    --green-color: #A1EEBD;
+}
+
+.color-1 {
+    color: var(--color-blue);
+    text-shadow: 0 0 10px #fff;
+}
+
+.color-2 {
+    color: var(--color-pink);
+    text-shadow: 0 0 10px #fff;
+}
+
+.color-3 {
+    color: var(--green-color);
+    text-shadow: 0 0 10px #fff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(90deg, var(--color-pink) 0%, var(--color-blue) 100%);
+    background-size: 200% 200%;
+    animation: gradientAnimation 10s ease infinite;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    font-family: var(--text-font);
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.text-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.text {
+    font-family: var(--fancy-font);
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+    position: relative;
+    animation: popIn 1s ease forwards;
+    z-index: 1;
+    margin-right: 20px;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.wrapper {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    padding: 20px;
+    z-index: 1;
+    margin-top: -200px;
+}
+
+.images-line {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker 20s linear infinite;
+}
+
+.rolling-image {
+    width: 120px;
+    margin: 0 24px;
+    display: inline-block;
+    object-fit: contain;
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-120px * 24));
+    }
+}
+
+.heart {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background-color: red;
+    transform: translateY(0) rotate(-45deg);
+    left: 0;
+    top: 105vh;
+    animation: fly 4s linear infinite;
+}
+
+@keyframes fly {
+    to {
+        transform: translateY(-110vh) rotate(-45deg);
+    }
+}
+
+.heart:before, .heart:after {
+    background: inherit;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    content: '';
+    border-radius: 50%;
+}
+
+.heart:before {
+    left: 0%;
+    top: -50%;
+}
+
+.heart:after {
+    right: -50%;
+    top: 0%;
+}
+
+.throbbing-heart {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    transform: rotate(-45deg);
+    animation: throb 1s infinite;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2;
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+.throbbing-heart:before,
+.throbbing-heart:after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.throbbing-heart:before {
+    top: -25px;
+    left: 0;
+}
+
+.throbbing-heart:after {
+    top: 0;
+    left: 25px;
+}
+
+@keyframes throb {
+    0%, 100% {
+        transform: scale(1) rotate(-45deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(-45deg);
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    font-family: var(--text-font);
+    animation: popUp 0.5s ease forwards;
+}
+
+@keyframes popUp {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .text {
+        font-size: 2rem;
+    }
+
+    .text-wrapper {
+        flex-direction: column;
+        align-items: center;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .throbbing-heart {
+        width: 40px;
+        height: 40px;
+        background-color: red;
+        transform: rotate(-45deg);
+        animation: throb 1s infinite;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 0.6rem;
+        font-weight: bold;
+        text-align: center;
+        z-index: 2;
+        position: relative;
+    }
+
+    .throbbing-heart:before,
+    .throbbing-heart:after {
+        content: '';
+        width: 40px;
+        height: 40px;
+        background-color: red;
+        position: absolute;
+        border-radius: 50%;
+    }
+
+    .throbbing-heart:before {
+        top: -20px;
+        left: 0;
+    }
+
+    .throbbing-heart:after {
+        top: 0;
+        left: 20px;
+    }
+
+    .rolling-image {
+        width: 80px;
+        margin: 0 12px;
+    }
+
+    .wrapper {
+        padding: 10px;
+        margin-top: 0;
+        margin-top: -100px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
